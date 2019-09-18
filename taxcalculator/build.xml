@@ -86,7 +86,19 @@ Authors Jens Dietrich <j.b.dietrich@massey.ac.nz>
       <copy todir="${build.classes}">
          <fileset dir="${src.dir}" includes="**/*.properties"/>
       </copy>
-   </target>
+   	 </target>
+	
+	
+   		<target name="backup">
+   			<echo>doing backup</echo>
+   			<tstamp >
+   				<format property="TODAY_CN" pattern="d-MMMM-yyyy" locale="zh"/> 
+   			</tstamp>
+   			<zip destfile="backup-${TODAY_CN}.zip" duplicate="preserve">
+   				<zipfileset dir="." includes="src"/>
+   			</zip>
+   		</target>
+
    <!-- =================================================================== -->
    <!-- Jar the classes                                                                                                                               -->
    <!-- =================================================================== -->
